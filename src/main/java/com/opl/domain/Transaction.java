@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.time.OffsetDateTime;
 
 @Data
 @Entity
@@ -28,7 +28,7 @@ public class Transaction {
     private BigDecimal amount;
 
     @Column(name = "transaction_time", columnDefinition = "TIMESTAMP WITH TIME ZONE", updatable = false)
-    private Instant transactionTime = Instant.now();
+    private OffsetDateTime transactionTime = OffsetDateTime.now();
 
     @Lob
     @Column(name = "description")
