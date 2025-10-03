@@ -1,0 +1,55 @@
+<-----userCreation--->
+curl --location 'http://localhost:8080/api/customers/user_registration' \
+--header 'Content-Type: application/json' \
+--data-raw ' {
+     "username": "tom",
+    "password": "admin@123",
+    "fullName": "tom",
+    "email": "shiv.birla@bank.com",
+    "phoneNumber": "9876543210",
+    "role": "CUSTOMER",
+    "accountDTO": {
+        "accountType": "CURRENT",
+        "balance": 45000.00
+    },
+    "addresses": [
+        {
+            "addressLine1": "123 Main Street",
+            "addressLine2": "Apt 4B",
+            "city": "Springfield",
+            "state": "IL",
+            "postalCode": "62701",
+            "country": "USA",
+            "addressType": "HOME"
+        },
+        {
+            "addressLine1": "45 Corporate Dr",
+            "addressLine2": null,
+            "city": "Capital City",
+            "state": "CA",
+            "postalCode": "90210",
+            "country": "USA",
+            "addressType": "OFFICE"
+        }
+    ]
+}'
+<!--------------------------------userLogin----------------------------->
+curl --location 'http://localhost:8080/api/customers/user_login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username": "toms",
+    "password": "admin@123"
+}'
+<!---------------------------------------------------------!>
+curl --location 'http://localhost:8080/api/transactions/withdrawAndDeposit' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0NVU1RPTUVSIl0sInVzZXJJZCI6NDUsInN1YiI6InNoaXYiLCJpYXQiOjE3NTk0NjM1NjYsImV4cCI6MTc1OTQ2MzY4Nn0.IG_xNjNYilkrOtdlAvAj9AhK5LTlLZduereoaBOZbYk' \
+--data '{
+    "accountNumber": "17021649759370",
+    "amount": 100.50,
+    "type":"deposit"
+  }'
+  <!--------------------------------------------------------------!>
+  curl --location 'http://localhost:8080/api/transactions/check_balance/97479182448817' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0NVU1RPTUVSIl0sInVzZXJJZCI6NDUsInN1YiI6InNoaXYiLCJpYXQiOjE3NTk0NjM1NjYsImV4cCI6MTc1OTQ2MzY4Nn0.IG_xNjNYilkrOtdlAvAj9AhK5LTlLZduereoaBOZbYk'
+  <!------------------------------------------------------------!>
